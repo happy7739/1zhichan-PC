@@ -1,0 +1,405 @@
+{extend name="public/base" /}
+
+<!-- 当前页面的样式及JS -->
+{block name="custom"}
+<style type="text/css">
+    /*自助投资分析*/
+    .zzfx-wrap
+    {
+        height: 463px;
+        background-color: White;
+        color: Black;
+    }
+    .zzfx
+    {
+        width: 620px;
+        margin: auto;
+    }
+    .zzfx-bt
+    {
+        font: normal 14px 微软雅黑;
+        height: 59px;
+        padding-top: 20px;
+    }
+    .zzfx-bt p
+    {
+        font-size: 30px;
+        float: left;
+    }
+    .zzfx-bt span
+    {
+        font-size: 12px;
+        display: block;
+        margin: 0px;
+        width: 320px;
+        float: left;
+        margin-left: 30px;
+    }
+    .zzfx-tab
+    {
+        width: 620px;
+        margin-top: 20px;
+    }
+    .zzfx-table
+    {
+        width: 100%;
+        border: 1px solid #3a3837;
+        border-bottom: none;
+        border-right: none;
+    }
+    .zzfx-table tr td.f16
+    {
+        font: normal 24px 微软雅黑;
+        color: Black;
+        height: 45px;
+    }
+    .zzfx-table tr td
+    {
+        height: 40px;
+        width: 50%;
+        border-bottom: 1px solid #3a3837;
+        border-right: 1px solid #3a3837;
+        padding-left: 20px;
+    }
+    .zzfx-table tr td span
+    {
+        display: inline-block;
+        width: 90px;
+        text-align: right;
+        font: normal 12px 微软雅黑;
+        margin-right: 10px;
+    }
+    .tzys-select, .kdcs-select, .kdcs-select1, .kdjy-select, .dm-select, .mdmj-select, .mdwz-select
+    {
+        width: 172px;
+        border-radius: 3px;
+        border: 1px solid #979797;
+        height: 25px;
+        padding: 2px 2px 2px 0;
+    }
+
+    .kdcs-select, .kdcs-select1
+    {
+        width: 80px;
+    }
+    .kdcs-select1
+    {
+        margin-left: 12px;
+    }
+    .kdjy-select, .dm-select
+    {
+        width: 70px;
+    }
+    .align
+    {
+        vertical-align: middle;
+        margin-top: -2px;
+        margin-right: 5px;
+    }
+    .mdwz-select, .mdmj-select
+    {
+        width: 100px;
+    }
+    .lxfs-text
+    {
+        width: 150px;
+        height: 25px;
+        line-height: 25px;
+        border: 1px solid #979797;
+        border-radius: 3px;
+        padding-left: 10px;
+    }
+    .tjfxbb-btn
+    {
+        margin: 20px 0 0 0;
+        overflow: hidden;
+    }
+    .tjfxbb-btn span
+    {
+        float: left;
+        font: normal 14px 微软雅黑;
+        display: inline-block;
+        margin: 0px;
+        height: 49px;
+        line-height: 49px;
+    }
+    .tjfxbb-submit
+    {
+        width: 148px;
+        height: 42px;
+        border: 0 none;
+        background: url(/static/index/image/tjfxbb-btn.jpg) no-repeat 0 0;
+        text-align: center;
+        cursor: pointer;
+        font: bold 16px/32px 微软雅黑;
+        margin-top: 0px;
+    }
+    .tjfxbb-submit:hover
+    {
+        background: url(/static/index/image/tjfxbb-btn.jpg) no-repeat 0 -42px;
+    }
+
+    #kaidianchengs .dmfg-select
+    {
+        margin: 0px;
+        width: 70px;
+    }
+    .fixed
+    {
+        font: normal 16px 微软雅黑;
+        color: #fff;
+        height: 63px;
+        line-height: 63px;
+        background: #782818;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 9999;
+    }
+    .fixed span
+    {
+        font: normal 24px Arial, Helvetica, sans-serif;
+        color: #ffae00;
+        vertical-align: middle;
+    }
+    .w10001
+    {
+        width: 1000px;
+        margin: 0 auto;
+    }
+</style>
+<script src="/static/index/js/jquery.xdomainrequest.min.js" type="text/javascript"></script>
+{/block}
+
+<!--内容-->
+{block name="main"}
+
+<div class="a1" align="center">
+    <div class="a15" align="center">
+        <table width="910" border="0" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+                <td height="50">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="left" class="font14" style="line-height: 0px;">
+                        <div class="cnr">
+                            <div class="zzfx-wrap">
+                                <!-- 自助投资分析 -->
+                                <div class="zzfx">
+                                    <div class="zzfx-bt">
+                                        <p>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;自助投资分析</p>
+                                        <span>（我们收到您提交的分析表后，一纸馋专业餐饮投资顾问将尽快与您取得联系，为您提供最优开店方案）</span>
+                                    </div>
+                                    <div class="zzfx-tab">
+                                        <form method="post" class="form-horizontal" action="{:url('index/Project/insert_message')}" id="projectForm">
+                                            {:token()}
+                                            <table class="zzfx-table" border="0" cellspacing="0" cellpadding="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td colspan="2" class="f16" align="center">
+                                                        一纸馋开店投资分析表
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>投资预算</span>
+                                                        <select name="budget" class="tzys-select">
+                                                            {notempty name="budget"}
+                                                            {volist name="budget" id="val"}
+                                                            <option value="{$val}">{$val}</option>
+                                                            {/volist}
+                                                            {/notempty}
+                                                        </select><font color="red">&nbsp;*</font>
+                                                    </td>
+                                                    <td>
+                                                        <span>喜欢的店面风格</span><select name="style" class="dmfg-select">
+                                                        {notempty name="style"}
+                                                        {volist name="style" id="val"}
+                                                        <option value="{$val}">{$val}</option>
+                                                        {/volist}
+                                                        {/notempty}
+                                                    </select><font color="red">&nbsp;*</font>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div id="kaidianchengs">
+                                                            <span>开店城市</span>
+                                                            <select name="province" class="dmfg-select">
+                                                                <option value="四川">四川</option>
+                                                                <option value="北京">北京</option>
+                                                                <option value="上海">上海</option>
+                                                                <option value="天津">天津</option>
+                                                                <option value="重庆">重庆</option>
+                                                                <option value="贵州">贵州</option>
+                                                                <option value="云南">云南</option>
+                                                                <option value="西藏">西藏</option>
+                                                                <option value="河南">河南</option>
+                                                                <option value="湖北">湖北</option>
+                                                                <option value="湖南">湖南</option>
+                                                                <option value="广东">广东</option>
+                                                                <option value="内蒙古">内蒙古</option>
+                                                                <option value="江苏">江苏</option>
+                                                                <option value="浙江">浙江</option>
+                                                                <option value="安徽">安徽</option>
+                                                                <option value="陕西">陕西</option>
+                                                                <option value="甘肃">甘肃</option>
+                                                                <option value="青海">青海</option>
+                                                                <option value="宁夏">宁夏</option>
+                                                                <option value="新疆">新疆</option>
+                                                                <option value="河北">河北</option>
+                                                                <option value="山西">山西</option>
+                                                                <option value="福建">福建</option>
+                                                                <option value="江西">江西</option>
+                                                                <option value="山东">山东</option>
+                                                                <option value="辽宁">辽宁</option>
+                                                                <option value="吉林">吉林</option>
+                                                                <option value="黑龙江">黑龙江</option>
+                                                                <option value="海南">海南</option>
+                                                            </select>&nbsp;&nbsp;
+                                                            <select name="jurisdiction" class="dmfg-select">
+                                                                <option value="市辖区">市辖区</option>
+                                                                <option value="县">县</option>
+                                                            </select><font color="red">&nbsp;*</font>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span>是否有开店经验</span>
+                                                        <select name="experience" class="kdjy-select">
+                                                            <option value="0">否</option>
+                                                            <option value="1">是</option>
+                                                        </select><font color="red">&nbsp;*</font>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>是否有门店</span>
+                                                        <select name="store" class="dm-select">
+                                                            <option value="0">否</option>
+                                                            <option value="1">是</option>
+                                                        </select><font color="red">&nbsp;*</font>
+                                                    </td>
+                                                    <td>
+                                                        <span>接收开店资料</span>
+                                                        <select name="data" class="dm-select">
+                                                            <option value="1">是</option>
+                                                            <option value="0">否</option>
+                                                        </select><font color="red">&nbsp;*</font>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>门店面积</span>
+                                                        <select name="area" class="mdmj-select">
+                                                            {notempty name="area"}
+                                                            {volist name="area" id="val"}
+                                                            <option value="{$val}">{$val}</option>
+                                                            {/volist}
+                                                            {/notempty}
+                                                        </select><font color="red">&nbsp;*</font>
+                                                    </td>
+                                                    <td>
+                                                        <span>接收资料QQ</span>
+                                                        <input name="qq" type="text" class="lxfs-text" />
+                                                        <font color="red">&nbsp;*</font>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>门店位置</span>
+                                                        <select name="position" class="mdwz-select">
+                                                            {notempty name="position"}
+                                                            {volist name="position" id="val"}
+                                                            <option value="{$val}">{$val}</option>
+                                                            {/volist}
+                                                            {/notempty}
+                                                        </select>
+                                                        <font color="red">&nbsp;*</font>
+                                                    </td>
+                                                    <td>
+                                                        <span>电话号码</span>
+                                                        <input id="aPhone" type="tel" name="phone" class="lxfs-text" />
+                                                        <font color="red">&nbsp;*</font>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="tjfxbb-btn">
+                                                <span>电话咨询：</span>
+                                                <span style="font-size: 30px;">
+                                                    <font color="red">&nbsp;&nbsp;{$configuration.tel}&nbsp;&nbsp;</font>
+                                                </span>
+                                                <button type="submit" class="tjfxbb-submit"></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- 自助投资分析 end -->
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td height="30">
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+    /*<====================================表单提交==========================================>*/
+    $('#projectForm').ajaxForm({
+        //前端验证
+        beforeSubmit:function () {
+            if($.trim($('#aPhone').val()) == ''){
+                layer.msg('电话号码不能为空',{icon: 5,time:1500,shade:0.5});
+                return false;
+            }
+        },
+        //提交到后台后，和后台进行交互 ，处理结果
+        success:function (res){
+            //console.log(res);
+            if(res.code == 1){
+                layer.alert('我们会尽快联系你的，请保持手机畅通！', {
+                    icon: 1,    //图标
+                    title:res.msg,  //标题
+                    closeBtn: 1,    // 是否显示关闭按钮
+                    anim: 4, //动画类型
+                    move: false,//是否可以拖动，默认可以拖动
+                    yes:function(){     //确定按钮
+                        history.go(0);
+                    },
+                    cancel: function(){     // 右上角关闭按钮的点击事件
+                        history.go(0);
+                    }
+                });
+            }else{
+                layer.alert('请稍后再试！', {
+                    icon: 5,    //图标
+                    title:res.msg,  //标题
+                    closeBtn: 1,    // 是否显示关闭按钮
+                    anim: 4, //动画类型
+                    move: false,//是否可以拖动，默认可以拖动
+                    yes:function(){     //确定按钮
+                        history.go(0);
+                    },
+                    cancel: function(){     // 右上角关闭按钮的点击事件
+                        history.go(0);
+                    }
+                });
+            }
+        },
+
+        //其他错误信息
+        error:function () {
+            layer.msg("非法操作",{icon: 5,time:1500,shade:0.5});
+            return false;
+        },
+    })
+</script>
+{/block}

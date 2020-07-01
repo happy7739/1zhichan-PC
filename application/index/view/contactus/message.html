@@ -1,0 +1,281 @@
+{extend name="public/base" /}
+
+<!-- 当前页面的样式及JS -->
+{block name="custom"}
+<script src="/static/index/js/jquery.xdomainrequest.min.js" type="text/javascript"></script>
+<style>
+    .but_s{
+        width: 150px;
+        background-color: #F36801;
+        border: none;
+        color: white;
+        padding: 10px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .but_r{
+        width: 150px;
+        background-color: #00F0FF;
+        border: none;
+        color: black;
+        margin-top: 20px;
+        margin-bottom: 8px;
+        padding: 10px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        font-weight: bold;
+  }
+</style>
+{/block}
+
+<!--内容-->
+{block name="main"}
+
+<div class="a1" align="center">
+    <div class="a15" align="center">
+        <table width="910" border="0" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+                <td height="50">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div align="left" class="font14" style="line-height: 27px;">
+                        <div class="a1" align="center">
+                            <div class="a17" align="center">
+                                <table width="930" border="0" cellpadding="0" cellspacing="0" align="center">
+                                    <tr>
+                                        <td height="50">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="left" class="font14" style="line-height: 27px;">
+                                                <table width="930" align="center" style="background: url(/static/index/image/lxwm.jpg);"
+                                                       border="0" cellspacing="0" cellpadding="0">
+                                                    <tbody>
+                                                    <tr class="firstRow">
+                                                        <td height="70" colspan="3">
+                                                            <br />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="523">
+                                                            <br />
+                                                        </td>
+                                                        <td width="303" height="50">
+                                                            <p>
+                                                                <span style="color: rgb(255, 255, 255); font-size: 14px;">一纸馋总部</span><span style="color: rgb(255, 192, 0);
+                                                    font-size: 18px;"><br />
+                                                    客服电话：{$configuration.tel}</span> <span style="color: rgb(255, 192, 0); font-size: 18px;">
+                                                        <br />
+                                                        400热线：{$configuration.mobile}</span>
+                                                            </p>
+                                                            <p>
+                                                                <span style="color: rgb(255, 255, 255); font-size: 12px;">总部地址：{$configuration.address}</span>
+                                                            </p>
+                                                            <p>
+                                                                <span style="color: rgb(255, 255, 255); font-size: 12px;">投资有风险，选择需谨慎</span>
+                                                            </p>
+                                                        </td>
+                                                        <td width="104">
+                                                            <br />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="100" colspan="3">
+                                                            <br />
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <p>
+                                                    &nbsp;</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div align="center" style="width: 800px; margin: 0 auto; text-align: center; background: #f2f2f2;
+                            border: 1px solid #e0dede;">
+                                                <div align="center">
+                                                    <table width="660" border="0" cellpadding="0" cellspacing="0" align="center" class="bais">
+                                                        <form method="post" class="form-horizontal" action="{:url('index/Contactus/insert_message')}" id="contactForm">
+                                                            {:token()}
+                                                            <tr>
+                                                                <td height="30" colspan="3">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="36" height="35" align="left" class="heis font14 ">姓名</td>
+                                                                <td width="11"></td>
+                                                                <td width="315" align="left">
+                                                                    <input id="cName" name="name" type="text" style="width: 280px; height: 26px;
+                                                    line-height: 26px; border: 1px solid #d9d9d9;" maxlength="50" />
+                                                                </td>
+                                                                <td width="298" class="font14 huis" align="left">
+                                                                    <span class="hongs">*</span> 您的真实姓名
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="10" colspan="3">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="35" align="left" class="heis font14 ">电话</td>
+                                                                <td></td>
+                                                                <td align="left" class="heis font14 ">
+                                                                    <input id="cPhone" name="phone" type="tel" style="width: 280px; height: 26px; line-height: 26px;
+                                                    border: 1px solid #d9d9d9;" onkeyup="value=value.replace(/[^\d]/g,'') " maxlength="11" />
+                                                                </td>
+                                                                <td class="font14 huis" align="left">
+                                                                    <span class="hongs">*</span> 电话是与您联系的重要方式,请正确填写
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="10" colspan="3">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="35" align="left" class="heis font14 ">
+                                                                    邮箱
+                                                                </td>
+                                                                <td>
+                                                                </td>
+                                                                <td align="left" class="heis font14 ">
+                                                                    <input id="cEmail" name="email" type="email" style="width: 280px; height: 26px; line-height: 26px;
+                                                    border: 1px solid #d9d9d9;" maxlength="30" />
+                                                                </td>
+                                                                <td>
+                                                                    <span class="hongs">*</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="10" colspan="3">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="35" align="left" class="heis font14 ">
+                                                                    地址
+                                                                </td>
+                                                                <td>
+                                                                </td>
+                                                                <td align="left" class="heis font14 ">
+                                                                    <input id="cAddress" name="address" type="text" style="width: 280px; height: 26px;
+                                                    line-height: 26px; border: 1px solid #d9d9d9;" maxlength="30" />
+                                                                </td>
+                                                                <td>
+                                                                    <span class="hongs">*</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="10" colspan="3">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="35" align="left" class="heis font14 ">
+                                                                    内容
+                                                                </td>
+                                                                <td>
+                                                                </td>
+                                                                <td align="left" class="heis font14 ">
+                                                <textarea id="cContent" name="content" style="width: 278px; height: 139px; line-height: 20px;
+                                                    border: 1px solid #d9d9d9;"></textarea>
+                                                                </td>
+                                                                <td valign="bottom" align="left">
+                                                                    <div>
+                                                                        <button class="but_s" type="submit">提交留言</button>
+                                                                    </div>
+
+                                                                        <button class="but_r" type="reset">重置</button>
+
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td height="70" colspan="5">
+                                                                </td>
+                                                            </tr>
+                                                        </form>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="20">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td height="30">
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+    /*<====================================表单提交==========================================>*/
+    $('#contactForm').ajaxForm({
+        //前端验证
+        beforeSubmit:function () {
+            if($.trim($('#cName').val()) == ''){
+                layer.msg('姓名不能为空',{icon: 5,time:1500,shade:0.5});
+                return false;
+            }
+            if($.trim($('#cPhone').val()) == ''){
+                layer.msg('电话不能为空',{icon: 5,time:1500,shade:0.5});
+                return false;
+            }
+        },
+        //提交到后台后，和后台进行交互 ，处理结果
+        success:function (res){
+            //console.log(res);
+            if(res.code == 1){
+                layer.alert('我们会尽快联系你的，请保持手机畅通！', {
+                    icon: 1,    //图标
+                    title:res.msg,  //标题
+                    closeBtn: 1,    // 是否显示关闭按钮
+                    anim: 4, //动画类型
+                    move: false,//是否可以拖动，默认可以拖动
+                    yes:function(){     //确定按钮
+                        history.go(0);
+                    },
+                    cancel: function(){     // 右上角关闭按钮的点击事件
+                        history.go(0);
+                    }
+                });
+            }else{
+                layer.alert('请稍后再试！', {
+                    icon: 5,    //图标
+                    title:res.msg,  //标题
+                    closeBtn: 1,    // 是否显示关闭按钮
+                    anim: 4, //动画类型
+                    move: false,//是否可以拖动，默认可以拖动
+                    yes:function(){     //确定按钮
+                        history.go(0);
+                    },
+                    cancel: function(){     // 右上角关闭按钮的点击事件
+                        history.go(0);
+                    }
+                });
+            }
+        },
+
+        //其他错误信息
+        error:function () {
+            layer.msg("非法操作",{icon: 5,time:1500,shade:0.5});
+            return false;
+        },
+    })
+</script>
+{/block}
